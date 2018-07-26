@@ -1,9 +1,12 @@
 package com.star.navigationviewtest;
 
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -16,6 +19,10 @@ public class NavigationViewActivity extends AppCompatActivity {
     private TabLayout mTabLayout;
     private Toolbar mToolbar;
 
+    private ActionBar mActionBar;
+    private DrawerLayout mDrawerLayout;
+    private NavigationView mNavigationView;
+
     private FragmentAdapter mFragmentAdapter;
 
     @Override
@@ -26,9 +33,15 @@ public class NavigationViewActivity extends AppCompatActivity {
         mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
-        mViewPager = findViewById(R.id.viewpager);
+        mActionBar = getSupportActionBar();
+        mActionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        mActionBar.setDisplayHomeAsUpEnabled(true);
 
+        mViewPager = findViewById(R.id.viewpager);
         initViewPager();
+
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+        mNavigationView = findViewById(R.id.nav_view);
     }
 
     private void initViewPager() {
