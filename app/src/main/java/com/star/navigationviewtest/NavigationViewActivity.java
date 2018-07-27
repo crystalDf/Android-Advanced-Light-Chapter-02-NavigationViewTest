@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,22 @@ public class NavigationViewActivity extends AppCompatActivity {
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mNavigationView = findViewById(R.id.nav_view);
+
+        if (mNavigationView != null) {
+
+            mNavigationView.setNavigationItemSelectedListener(item -> {
+
+                item.setChecked(true);
+
+                String title = item.getTitle().toString();
+
+                Toast.makeText(getApplicationContext(), title, Toast.LENGTH_LONG).show();
+
+                mDrawerLayout.closeDrawers();
+
+                return true;
+            });
+        }
     }
 
     private void initViewPager() {
