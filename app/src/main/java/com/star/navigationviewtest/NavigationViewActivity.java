@@ -47,7 +47,6 @@ public class NavigationViewActivity extends AppCompatActivity {
         mNavigationView = findViewById(R.id.nav_view);
 
         if (mNavigationView != null) {
-
             mNavigationView.setNavigationItemSelectedListener(item -> {
                 item.setChecked(true);
 
